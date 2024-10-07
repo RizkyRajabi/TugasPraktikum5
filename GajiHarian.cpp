@@ -5,7 +5,7 @@ using namespace std;
 
 // Fungsi untuk menghitung gaji pokok
 int pokok(int jamKerja) {
-    return jamKerja * 7500;
+    return (jamKerja > 8 ? 8 : jamKerja) * 7500;
 }
 
 // Fungsi untuk menghitung gaji lembur
@@ -39,6 +39,9 @@ int transport(int jamKerja) {
 int main() {
     string nip, nama;
     int jamKerja, gajiPokok, gajiLembur, uangMakan, uangTransport, totalGaji;
+    char ulang;
+
+    do{
 
     cout << "Masukkan NIP: ";
     cin >> nip;
@@ -51,6 +54,7 @@ int main() {
     gajiLembur = lembur(jamKerja);
     uangMakan = makan(jamKerja);
     uangTransport = transport(jamKerja);
+    totalGaji = gajiPokok + gajiLembur + uangMakan + uangTransport;
 
     cout << "\nRincian Gaji" << endl;
     cout << "NIP: " << nip << endl;
@@ -59,6 +63,15 @@ int main() {
     cout << "Lembur: Rp " << gajiLembur << endl;
     cout << "Uang Makan: Rp " << uangMakan << endl;
     cout << "Uang Transport: Rp " << uangTransport << endl;
+    cout << "Total Gaji: Rp " << totalGaji << endl;
+
+    cout << "\nCoba Hitung Gaji Lagi?(y/n): ";
+    cin >> ulang;
+    cout << endl;
+
+    }while(ulang == 'y' || ulang == 'Y');
+
+    cout << "Program Selesai"<<endl;
 
     return 0;
 }
